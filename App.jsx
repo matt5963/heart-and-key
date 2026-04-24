@@ -245,11 +245,10 @@ const REUNION_ACTIVITIES = [
 const REUNION_CATEGORIES = ["Worship", "Fuck", "Ruined", "Play", "Tease"];
 
 const REUNION_INTRO = [
-  "Here's what this is, in plain words.",
-  "While you're gone, you hold his erections and his orgasms. You and only you. The cage and the key make that real. Every time he feels it, his mind goes to you.",
-  "That's the gift. Not a denial, not a punishment. One part of him, in your keeping.",
-  "When you come home, the two of you get to play with what that means — together.",
-  "You don't have to be strict. You don't have to be theatrical. This is just one more way the two of you get to love each other after twenty years — a little more thought, a little more play, a key around your neck.",
+  "You now own his erections and his orgasms. You and only you. The cage and the key make that real. Every time he feels it, his mind goes to you.",
+  "That's the gift. Not a denial, not a punishment. One important part of him, is now in your keeping.",
+  "The answers to the questions ahead will create a plan for you two to explore and play together.",
+  "Keeping your man in chastity is unique.  Very few men are willing to give up control to this part of them and their lives.  Enjoy!",
 ];
 
 const REUNION_PLAN = [
