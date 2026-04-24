@@ -4,13 +4,10 @@ const url = import.meta.env.VITE_SUPABASE_URL
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 if (!url || !anonKey) {
-  console.warn('Missing Supabase environment variables. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.')
+  console.warn('Missing Supabase environment variables. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in Vercel.')
 }
 
-export const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-)
+export const supabase = createClient(url, anonKey)
 
 window.storage = {
   async get(key) {
@@ -21,10 +18,10 @@ window.storage = {
       .maybeSingle()
 
     if (error) {
-      if (error.code === 'PGRST116') return null
       console.error('Supabase get error:', error)
       return null
     }
+
     if (!data) return null
     return { key, value: data.value }
   },
@@ -38,11 +35,16 @@ window.storage = {
       console.error('Supabase set error:', error)
       throw error
     }
+
     return { key, value }
   },
 
   async delete(key) {
-    const { error } = await supabase.from('kv_store').delete().eq('key', key)
+    const { error } = await supabase
+      .from('kv_store')
+      .delete()
+      .eq('key', key)
+
     if (error) throw error
     return { key, deleted: true }
   },
@@ -52,6 +54,7 @@ window.storage = {
       .from('kv_store')
       .select('key')
       .like('key', `${prefix}%`)
+
     if (error) throw error
     return { keys: (data || []).map(r => r.key) }
   },
