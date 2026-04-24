@@ -7,7 +7,10 @@ if (!url || !anonKey) {
   console.warn('Missing Supabase environment variables. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.')
 }
 
-export const supabase = createClient(url || 'https://example.supabase.co', anonKey || 'missing-key')
+export const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+)
 
 window.storage = {
   async get(key) {
